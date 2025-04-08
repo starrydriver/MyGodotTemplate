@@ -1,0 +1,18 @@
+# Godot 4+ specific ignores
+.godot/
+.android/
+.import/
+export_presets.cfg
+*.godot
+*.mono/
+# Mono-specific ignores
+.mono/
+*.csproj
+*.sln
+*.userprefs
+*.pidb
+*.pdb
+*.mdb
+*.log
+*.vs/
+

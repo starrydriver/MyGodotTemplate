@@ -1,0 +1,13 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://ccdetqd6yobpl"]
+
+[ext_resource type="Script" uid="uid://0p5f2yt51sk" path="res://背包系统/脚本/背包物品.cs" id="2_vo6tl"]
+
+[resource]
+script = ExtResource("2_vo6tl")
+Id = ""
+Name = ""
+Count = 1
+Description = ""
+IsStackable = false
+MaxStackSize = 1
+ItemType = "Default"

@@ -1,0 +1,52 @@
+[gd_scene load_steps=5 format=3 uid="uid://d2lu5i7eoap4j"]
+
+[ext_resource type="Script" uid="uid://3f127b3vjh7l" path="res://背包系统/脚本/物品格子.cs" id="1_ta702"]
+[ext_resource type="Texture2D" uid="uid://dinheteqvdsmq" path="res://素材/icon.svg" id="2_kx228"]
+[ext_resource type="Script" uid="uid://0p5f2yt51sk" path="res://背包系统/脚本/背包物品.cs" id="3_fu3a7"]
+
+[sub_resource type="Resource" id="Resource_6mv21"]
+resource_local_to_scene = true
+script = ExtResource("3_fu3a7")
+Id = ""
+Name = ""
+Count = 1
+Description = ""
+Icon = ExtResource("2_kx228")
+IsStackable = false
+MaxStackSize = 1
+ItemType = "Default"
+
+[node name="物品格子" type="MarginContainer" node_paths=PackedStringArray("ResCount", "Icon")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1028.0
+offset_bottom = -530.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+script = ExtResource("1_ta702")
+ResCount = NodePath("Label")
+Icon = NodePath("MarginContainer/TextureRect")
+Res = SubResource("Resource_6mv21")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer"]
+layout_mode = 2
+expand_mode = 1
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 30
+text = "99"

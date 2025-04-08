@@ -1,0 +1,262 @@
+[gd_scene load_steps=11 format=3 uid="uid://bmi8icl0h2bnk"]
+
+[ext_resource type="Script" uid="uid://dmbfw2ry5r4gw" path="res://背包系统/脚本/格子容器.cs" id="1_6pufo"]
+[ext_resource type="Script" uid="uid://boj77sl4e74fj" path="res://背包系统/脚本/背包系统.cs" id="1_mypiu"]
+[ext_resource type="PackedScene" uid="uid://d2lu5i7eoap4j" path="res://背包系统/物品格子.tscn" id="1_u0xjf"]
+[ext_resource type="Texture2D" uid="uid://dinheteqvdsmq" path="res://素材/icon.svg" id="4_x4vi3"]
+[ext_resource type="Script" uid="uid://0p5f2yt51sk" path="res://背包系统/脚本/背包物品.cs" id="5_g8qh5"]
+[ext_resource type="Texture2D" uid="uid://biob632iiqgh7" path="res://素材/coin.png" id="6_6tg6x"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_taesj"]
+bg_color = Color(0.521569, 0.505882, 0.6, 0.298039)
+
+[sub_resource type="Resource" id="Resource_antsv"]
+resource_local_to_scene = true
+script = ExtResource("5_g8qh5")
+Id = "1"
+Name = ""
+Count = 1
+Description = ""
+Icon = ExtResource("4_x4vi3")
+IsStackable = false
+MaxStackSize = 1
+ItemType = "Default"
+
+[sub_resource type="Resource" id="Resource_6w2wt"]
+resource_local_to_scene = true
+script = ExtResource("5_g8qh5")
+Id = "2"
+Name = ""
+Count = 1
+Description = ""
+Icon = ExtResource("6_6tg6x")
+IsStackable = false
+MaxStackSize = 1
+ItemType = "Default"
+
+[sub_resource type="Resource" id="Resource_x4vi3"]
+resource_local_to_scene = true
+script = ExtResource("5_g8qh5")
+Id = "1"
+Name = ""
+Count = 1
+Description = ""
+Icon = ExtResource("4_x4vi3")
+IsStackable = false
+MaxStackSize = 1
+ItemType = "Default"
+
+[node name="背包系统" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 12.0
+offset_right = 5.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mypiu")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 61.0
+offset_top = 46.0
+offset_right = 845.0
+offset_bottom = 547.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_taesj")
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="GridContainer" type="GridContainer" parent="Panel/MarginContainer"]
+layout_mode = 2
+columns = 6
+
+[node name="Panel1" type="Panel" parent="Panel/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_6pufo")
+
+[node name="物品格子" parent="Panel/MarginContainer/GridContainer/Panel1" instance=ExtResource("1_u0xjf")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
+Res = SubResource("Resource_antsv")
+
+[node name="Panel2" type="Panel" parent="Panel/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_6pufo")
+
+[node name="物品格子" parent="Panel/MarginContainer/GridContainer/Panel2" instance=ExtResource("1_u0xjf")]
+texture_filter = 1
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
+Res = SubResource("Resource_6w2wt")
+
+[node name="Panel3" type="Panel" parent="Panel/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_6pufo")
+
+[node name="物品格子" parent="Panel/MarginContainer/GridContainer/Panel3" instance=ExtResource("1_u0xjf")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
+Res = SubResource("Resource_x4vi3")
+
+[node name="Panel4" type="Panel" parent="Panel/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_6pufo")
+
+[node name="Panel5" type="Panel" parent="Panel/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_6pufo")
+
+[node name="Panel6" type="Panel" parent="Panel/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_6pufo")
+
+[node name="Panel7" type="Panel" parent="Panel/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_6pufo")
+
+[node name="Panel8" type="Panel" parent="Panel/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_6pufo")
+
+[node name="Panel9" type="Panel" parent="Panel/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_6pufo")
+
+[node name="Panel10" type="Panel" parent="Panel/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_6pufo")
+
+[node name="Panel11" type="Panel" parent="Panel/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_6pufo")
+
+[node name="Panel12" type="Panel" parent="Panel/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_6pufo")
+
+[node name="Panel13" type="Panel" parent="Panel/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_6pufo")
+
+[node name="Panel14" type="Panel" parent="Panel/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_6pufo")
+
+[node name="Panel15" type="Panel" parent="Panel/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_6pufo")
+
+[node name="Panel16" type="Panel" parent="Panel/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_6pufo")
+
+[node name="Panel17" type="Panel" parent="Panel/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_6pufo")
+
+[node name="Panel18" type="Panel" parent="Panel/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_6pufo")
+
+[node name="Panel19" type="Panel" parent="Panel/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_6pufo")
+
+[node name="Panel20" type="Panel" parent="Panel/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_6pufo")
+
+[node name="Panel21" type="Panel" parent="Panel/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_6pufo")
+
+[node name="Panel22" type="Panel" parent="Panel/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_6pufo")
+
+[node name="Panel23" type="Panel" parent="Panel/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_6pufo")
+
+[node name="Panel24" type="Panel" parent="Panel/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_6pufo")
