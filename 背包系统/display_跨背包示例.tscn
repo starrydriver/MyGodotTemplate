@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://bvaviwffq7hl0"]
+
+[ext_resource type="PackedScene" uid="uid://bmi8icl0h2bnk" path="res://背包系统/背包系统.tscn" id="1_oxs16"]
+
+[node name="Display_跨背包示例" type="Node2D"]
+
+[node name="背包系统" parent="." instance=ExtResource("1_oxs16")]
+offset_left = -327.0
+offset_top = 41.0
+offset_right = -327.0
+offset_bottom = 41.0
+
+[node name="背包系统2" parent="." instance=ExtResource("1_oxs16")]
+offset_left = 697.0
+offset_top = 43.0
+offset_right = 697.0
+offset_bottom = 43.0
