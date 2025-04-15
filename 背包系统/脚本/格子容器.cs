@@ -30,7 +30,28 @@ public partial class 格子容器 : Panel
         // 更新属性框信息
         if (GetChildCount() > 0)
         {
-            // 显示物品属性
+            // 显示物品属性，并确保属性框不会超出屏幕
+            Vector2 mousePos = GetViewport().GetMousePosition();
+            Vector2 newPos = mousePos + new Vector2(0, 5);
+
+            // 计算属性框的最大可用位置
+            Vector2 viewportSize = GetViewportRect().Size;
+            Vector2 clampedPos = newPos;
+
+            // 如果属性框超出右边界
+            if (clampedPos.X + attributeBox.Size.X > viewportSize.X)
+                clampedPos.X = viewportSize.X - attributeBox.Size.X;
+            // 如果属性框超出下边界
+            if (clampedPos.Y + attributeBox.Size.Y > viewportSize.Y)
+                clampedPos.Y = viewportSize.Y - attributeBox.Size.Y;
+            // 如果属性框超出左边界
+            if (clampedPos.X < 0)
+                clampedPos.X = 0;
+            // 如果属性框超出上边界
+            if (clampedPos.Y < 0)
+                clampedPos.Y = 0;
+
+            attributeBox.Position = clampedPos;
             attributeBox.Visible = true;
             GD.Print("显示物品属性");
             // 获取第一个子节点作为物品
