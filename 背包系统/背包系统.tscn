@@ -15,9 +15,9 @@ bg_color = Color(0.521569, 0.505882, 0.6, 0.298039)
 resource_local_to_scene = true
 script = ExtResource("5_g8qh5")
 Id = "1"
-Name = ""
+Name = "godot"
 Count = 1
-Description = ""
+Description = "这是一个godot图标"
 Icon = ExtResource("4_x4vi3")
 IsStackable = false
 MaxStackSize = 1
@@ -27,9 +27,9 @@ ItemType = "Default"
 resource_local_to_scene = true
 script = ExtResource("5_g8qh5")
 Id = "2"
-Name = ""
+Name = "金币"
 Count = 1
-Description = ""
+Description = "流通货物"
 Icon = ExtResource("6_6tg6x")
 IsStackable = false
 MaxStackSize = 1
@@ -39,9 +39,9 @@ ItemType = "Default"
 resource_local_to_scene = true
 script = ExtResource("5_g8qh5")
 Id = "1"
-Name = ""
+Name = "godot"
 Count = 1
-Description = ""
+Description = "这是一个godot图标"
 Icon = ExtResource("4_x4vi3")
 IsStackable = false
 MaxStackSize = 1
@@ -265,7 +265,8 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_6pufo")
 
-[node name="属性框" type="Panel" parent="."]
+[node name="属性框" type="Panel" parent="." node_paths=PackedStringArray("名称", "简介")]
+visible = false
 layout_mode = 0
 offset_left = 870.0
 offset_top = 115.0
@@ -273,6 +274,8 @@ offset_right = 1126.0
 offset_bottom = 474.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_6tg6x")
 script = ExtResource("7_g8qh5")
+"名称" = NodePath("MarginContainer/VBoxContainer/名称")
+"简介" = NodePath("MarginContainer/VBoxContainer/简介")
 
 [node name="MarginContainer" type="MarginContainer" parent="属性框"]
 layout_mode = 1
@@ -292,9 +295,8 @@ theme_override_constants/separation = 10
 
 [node name="名称" type="Label" parent="属性框/MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "名称："
+text = "名称：null"
 
 [node name="简介" type="Label" parent="属性框/MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "简介 
-："
+text = "简介 :nulll"

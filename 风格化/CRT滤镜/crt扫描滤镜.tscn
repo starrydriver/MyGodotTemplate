@@ -1,0 +1,91 @@
+[gd_scene load_steps=5 format=3 uid="uid://cbtc2l1bgh8tb"]
+
+[ext_resource type="Script" uid="uid://cpexii5rjk60d" path="res://风格化/CRT滤镜/脚本/CRTShaderLayer.cs" id="1_4fdg5"]
+[ext_resource type="Shader" uid="uid://5mmjhl84hp5q" path="res://风格化/CRT滤镜/shader/CRT.gdshader" id="1_vxvse"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4fdg5"]
+shader = ExtResource("1_vxvse")
+shader_parameter/overlay = false
+shader_parameter/scanlines_opacity = 0.4
+shader_parameter/scanlines_width = 0.25
+shader_parameter/grille_opacity = 0.3
+shader_parameter/resolution = Vector2(640, 480)
+shader_parameter/pixelate = true
+shader_parameter/roll = true
+shader_parameter/roll_speed = 8.0
+shader_parameter/roll_size = 15.0
+shader_parameter/roll_variation = 1.8
+shader_parameter/distort_intensity = 0.05
+shader_parameter/noise_opacity = 0.4
+shader_parameter/noise_speed = 5.0
+shader_parameter/static_noise_intensity = 0.06
+shader_parameter/aberration = 0.03
+shader_parameter/brightness = 1.4
+shader_parameter/discolor = true
+shader_parameter/warp_amount = 1.0
+shader_parameter/clip_warp = false
+shader_parameter/vignette_intensity = 0.4
+shader_parameter/vignette_opacity = 0.5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vxvse"]
+border_color = Color(1, 1, 1, 1)
+
+[node name="CRT扫描滤镜" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.465107, 0.703043, 0.979404, 1)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." node_paths=PackedStringArray("CRTFilter")]
+script = ExtResource("1_4fdg5")
+CRTFilter = NodePath("ColorRect")
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_4fdg5")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 366.0
+offset_top = 70.0
+offset_right = 735.0
+offset_bottom = 541.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_vxvse")
+
+[node name="OptionButton" type="OptionButton" parent="Panel"]
+layout_mode = 0
+offset_left = -70.0
+offset_top = -2.0
+offset_right = 451.0
+offset_bottom = 86.0
+item_count = 2
+popup/item_0/text = "123"
+popup/item_0/id = 0
+popup/item_1/text = "456"
+popup/item_1/id = 1
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 120.0
+offset_right = 423.0
+offset_bottom = 359.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 36
+text = "sdsd"

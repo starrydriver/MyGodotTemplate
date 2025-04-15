@@ -3,10 +3,18 @@ using System;
 
 public partial class 格子容器 : Panel
 {
+    //显示格子物品属性
+    public 属性框 attributeBox;
     public override void _Ready()
     {
+        // 获取属性框
+        attributeBox = GetNode<属性框>("/root/背包系统/属性框");
+        GD.Print(attributeBox.简介);
         // 连接输入事件
         GuiInput += HandleInputEvent;
+        // 显示物品属性
+        MouseEntered += OpenDisplayAttribute;
+        MouseExited += CloseDisplayAttribute;
     }
 
     public override void _Process(double delta)
@@ -16,6 +24,26 @@ public partial class 格子容器 : Panel
         {
             背包系统.followingItem.Position = GetViewport().GetMousePosition() - 背包系统.followingItem.Scale * (背包系统.followingItem as Control).Size ;
         }
+    }
+    private void OpenDisplayAttribute()
+    {
+        // 更新属性框信息
+        if (GetChildCount() > 0)
+        {
+            // 显示物品属性
+            attributeBox.Visible = true;
+            GD.Print("显示物品属性");
+            // 获取第一个子节点作为物品
+            物品格子 item = GetChild(0) as 物品格子;
+            attributeBox.名称.Text = "名称："+item.Res.Name;
+            attributeBox.简介.Text = "简介："+item.Res.Description;
+            GD.Print(attributeBox.简介);
+        }
+    }
+    private void CloseDisplayAttribute()
+    {
+        // 显示物品属性
+        attributeBox.Visible = false;
     }
     private void HandleInputEvent(InputEvent @event)
 	{
