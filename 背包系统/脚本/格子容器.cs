@@ -8,7 +8,7 @@ public partial class 格子容器 : Panel
     public override void _Ready()
     {
         // 获取属性框
-        attributeBox = GetNode<属性框>("/root/背包系统/属性框");
+        attributeBox = GetTree().Root.GetNode<属性框>("背包系统/属性框");
         GD.Print(attributeBox.简介);
         // 连接输入事件
         GuiInput += HandleInputEvent;

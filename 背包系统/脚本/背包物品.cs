@@ -5,7 +5,7 @@ public partial class 背包物品 : Resource
 {
 	// 物品的唯一ID
     [Export]
-    public string Id { get; set; } = "";
+    public int Id { get; set; } = 0;
     // 物品名称
     [Export]
     public string Name { get; set; } = "";

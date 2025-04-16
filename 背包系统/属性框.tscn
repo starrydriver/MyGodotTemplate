@@ -1,0 +1,41 @@
+[gd_scene load_steps=3 format=3 uid="uid://b4hfm4rp3ctfk"]
+
+[ext_resource type="Script" uid="uid://cttdq0lv71tr3" path="res://背包系统/脚本/属性框.cs" id="1_jfxt8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6tg6x"]
+bg_color = Color(0.733347, 0.882823, 0.961699, 0.368627)
+
+[node name="属性框" type="Panel" node_paths=PackedStringArray("名称", "简介")]
+visible = false
+offset_left = 870.0
+offset_top = 115.0
+offset_right = 1126.0
+offset_bottom = 474.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_6tg6x")
+script = ExtResource("1_jfxt8")
+"名称" = NodePath("MarginContainer/VBoxContainer/名称")
+"简介" = NodePath("MarginContainer/VBoxContainer/简介")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="名称" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "名称：null"
+
+[node name="简介" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "简介 :nulll"

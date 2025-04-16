@@ -1,0 +1,17 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://cvjpom4wsvemf"]
+
+[ext_resource type="Texture2D" uid="uid://dinheteqvdsmq" path="res://素材/icon.svg" id="1_6ivp7"]
+[ext_resource type="Script" uid="uid://0p5f2yt51sk" path="res://背包系统/脚本/背包物品.cs" id="1_qi2nq"]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("1_qi2nq")
+Id = "1"
+Name = "godot"
+Count = 1
+Description = "这是一个godot图标
+"
+Icon = ExtResource("1_6ivp7")
+IsStackable = false
+MaxStackSize = 1
+ItemType = "Default"

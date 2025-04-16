@@ -7,7 +7,7 @@
 [sub_resource type="Resource" id="Resource_6mv21"]
 resource_local_to_scene = true
 script = ExtResource("3_fu3a7")
-Id = ""
+Id = 0
 Name = ""
 Count = 1
 Description = ""

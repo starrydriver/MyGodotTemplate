@@ -1,0 +1,16 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://bng3ykmxror0v"]
+
+[ext_resource type="Texture2D" uid="uid://biob632iiqgh7" path="res://素材/coin.png" id="1_ihrw8"]
+[ext_resource type="Script" uid="uid://0p5f2yt51sk" path="res://背包系统/脚本/背包物品.cs" id="1_u480x"]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("1_u480x")
+Id = 1
+Name = "金币"
+Count = 1
+Description = "流通货物"
+Icon = ExtResource("1_ihrw8")
+IsStackable = false
+MaxStackSize = 1
+ItemType = "Default"
