@@ -1,0 +1,9 @@
+{
+    "start": {
+        "text": "你好,我是一个对话系统。",
+        "response": [
+            {"text": "你好", "next": "ask_help"},
+            {"text": "再见", "next": "end"}
+        ]
+    }
+}
