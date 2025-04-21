@@ -1,0 +1,71 @@
+[gd_scene load_steps=4 format=3 uid="uid://cgj66jqub40e3"]
+
+[ext_resource type="Script" uid="uid://nmedihb76lts" path="res://对话系统/DialogueBox.cs" id="1_ci3of"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3ovy4"]
+resource_local_to_scene = true
+bg_color = Color(0.32549, 0.654902, 0.721569, 0.592157)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ci3of"]
+bg_color = Color(0.823529, 0.639216, 0.407843, 0.592157)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="对话组" type="Control" node_paths=PackedStringArray("myLabel", "myButton")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ci3of")
+myLabel = NodePath("对话框1")
+myButton = NodePath("对话框1/Button")
+
+[node name="对话框1" type="Label" parent="."]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 51.0
+offset_right = 409.0
+offset_bottom = 192.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_3ovy4")
+autowrap_mode = 2
+
+[node name="Button" type="Button" parent="对话框1"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.025
+anchor_bottom = 0.052
+offset_left = 305.0
+offset_top = 115.0
+offset_right = 329.025
+offset_bottom = 129.668
+theme_override_font_sizes/font_size = 10
+text = "jump"
+
+[node name="对话框2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 496.0
+offset_top = 90.0
+offset_right = 855.0
+offset_bottom = 231.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_ci3of")
+autowrap_mode = 2
+
+[node name="Button" type="Button" parent="对话框2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.025
+anchor_bottom = 0.052
+offset_left = 305.0
+offset_top = 115.0
+offset_right = 329.025
+offset_bottom = 129.668
+theme_override_font_sizes/font_size = 10
+text = "jump"
