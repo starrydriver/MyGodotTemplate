@@ -1,20 +1,22 @@
 using Godot;
 using System;
+using System.Threading;
 using System.Threading.Tasks;
 
 public partial class DialogueBox : Control
 {
 	[Export] public string myJson="res://对话系统/json实现/txt1.json";
-	[Export] public Label myLabel;
-	[Export] public Button myButton1;
-    [Export] public Button myButton2;
+	[Export] public Label myLabel1;
+    [Export] public Label myLabel2;
     [Export]public int eventId = 0;
     private int diaCurrent = 0;
+    private string diaType = "";
+    private CancellationTokenSource _currentDisplayCTS;
+    private bool isAdd = false;
     private Godot.Collections.Dictionary dialogueDict = new Godot.Collections.Dictionary();
 	public override void _Ready()
 	{	
         JsonParse();
-        myButton1.ButtonUp +=  NextButtonClick;
 	}
 	public override void _Process(double delta)
 	{
@@ -42,10 +44,12 @@ public partial class DialogueBox : Control
             if (dict.ContainsKey("dialogue_only"))
             {
                 dialogueDict = dict["dialogue_only"].AsGodotDictionary();
+                diaType = "dialogue_only";
             }
             else if (dict.ContainsKey("dialogue_mutual"))
             {
                 dialogueDict = dict["dialogue_mutual"].AsGodotDictionary();
+                diaType = "dialogue_mutual";
             }
             else
             {
@@ -65,26 +69,65 @@ public partial class DialogueBox : Control
         {
             key = keys[diaCurrent].AsString();
         }
-        if (key.StartsWith("text"))
+        if(diaType == "dialogue_only")
         {
-            var text = dialogueDict[key].AsString();
-            _ = DisplayTextOneByOne(myLabel,text);
+            if (key.StartsWith("text"))
+            {
+                var text = dialogueDict[key].AsString();
+                _ = DisplayTextOneByOne(myLabel1,text);
+            }
+        }
+        else if(diaType == "dialogue_mutual")
+        {
+            if (key.StartsWith("textA"))
+            {
+                var text = dialogueDict[key].AsString();
+                _ = DisplayTextOneByOne(myLabel1,text);
+            }
+            else if (key.StartsWith("textB"))
+            {
+                var text = dialogueDict[key].AsString();
+                _ = DisplayTextOneByOne(myLabel2,text);
+            }
         }
     }
     public void NextButtonClick()
     {
         JsonTextParse();
+        if(isAdd == false)
+        {
+            return;
+        }
         diaCurrent++;
     }
     public async Task DisplayTextOneByOne(Label label, string myText, float interval = 0.1f)
     {
+        // 取消正在进行的显示任务
+        _currentDisplayCTS?.Cancel();
+        _currentDisplayCTS = new CancellationTokenSource();
         // 清空初始文本
-        label.Text = ""; 
-        // 逐个字符显示
-        for (int i = 0; i < myText.Length; i++)
+        label.Text = "";
+        try
         {
-            label.Text += myText[i];
-            await Task.Delay((int)(interval * 1000));// 转换为毫秒
+            // 逐个字符显示
+            for (int i = 0; i < myText.Length; i++)
+            {
+                // 检查是否被取消
+                if (_currentDisplayCTS.IsCancellationRequested)
+                {
+                    isAdd = false;
+                    label.Text = myText;
+                    return;
+                }
+                isAdd = true; 
+                label.Text += myText[i];
+                await Task.Delay((int)(interval * 1000), _currentDisplayCTS.Token);
+            }
+        }
+        catch (OperationCanceledException)
+        {
+            // 正常取消时立即显示完整文本
+            label.Text = myText;
         }
     }
 }

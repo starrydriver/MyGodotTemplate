@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://b34c7t4rw3q6e"]
+
+[node name="NextButton" type="Button"]
+anchors_preset = -1
+anchor_right = 0.025
+anchor_bottom = 0.052
+offset_left = 305.0
+offset_top = 115.0
+offset_right = 329.025
+offset_bottom = 129.668
+theme_override_font_sizes/font_size = 10
+text = "jump"
