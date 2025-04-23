@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://cgj66jqub40e3"]
+[gd_scene load_steps=5 format=3 uid="uid://cgj66jqub40e3"]
 
 [ext_resource type="Script" uid="uid://nmedihb76lts" path="res://对话系统/DialogueBox.cs" id="1_ci3of"]
 [ext_resource type="PackedScene" uid="uid://b34c7t4rw3q6e" path="res://对话系统/next_button.tscn" id="2_ydkre"]
-[ext_resource type="Script" uid="uid://blumbs0latk2" path="res://对话系统/NextButton.cs" id="3_xm2rs"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3ovy4"]
 resource_local_to_scene = true
@@ -46,15 +45,14 @@ offset_left = 315.0
 offset_top = 111.0
 offset_right = 339.025
 offset_bottom = 125.668
-script = ExtResource("3_xm2rs")
 myDialogueBox = NodePath("../..")
 
 [node name="对话框2" type="Label" parent="."]
 layout_mode = 0
-offset_left = 496.0
-offset_top = 90.0
-offset_right = 855.0
-offset_bottom = 231.0
+offset_left = 489.0
+offset_top = 50.0
+offset_right = 848.0
+offset_bottom = 191.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_ci3of")
 autowrap_mode = 2
 
@@ -64,5 +62,4 @@ offset_left = 319.0
 offset_top = 112.0
 offset_right = 343.025
 offset_bottom = 126.668
-script = ExtResource("3_xm2rs")
 myDialogueBox = NodePath("../..")

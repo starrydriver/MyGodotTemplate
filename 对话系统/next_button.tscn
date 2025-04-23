@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://b34c7t4rw3q6e"]
+[gd_scene load_steps=2 format=3 uid="uid://b34c7t4rw3q6e"]
+
+[ext_resource type="Script" uid="uid://blumbs0latk2" path="res://对话系统/NextButton.cs" id="1_kv6co"]
 
 [node name="NextButton" type="Button"]
 anchors_preset = -1
@@ -10,3 +12,4 @@ offset_right = 329.025
 offset_bottom = 129.668
 theme_override_font_sizes/font_size = 10
 text = "jump"
+script = ExtResource("1_kv6co")
