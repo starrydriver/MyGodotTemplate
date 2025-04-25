@@ -4,7 +4,8 @@ using System.Collections.Generic;
 
 public partial class BreakBricksSprite : Sprite2D
 {
-	public float ExplosideForce = 1000.0f;
+	[Export] public CharacterBody2D testBullet;
+	public float ExplosideForce = 1500.0f;
 	private PackedScene myBulletScene;
 	private BreakBricksBullet myBullet;
 	public override void _Ready()
@@ -15,7 +16,7 @@ public partial class BreakBricksSprite : Sprite2D
 	{
 		QueueRedraw();
 	}
-	public override void _Input(InputEvent @event)
+	public override void _UnhandledInput(InputEvent @event)
 	{
 		if (@event is InputEventMouseButton mouseButtonEvent)
 		{
@@ -44,25 +45,44 @@ public partial class BreakBricksSprite : Sprite2D
 	public void updateTrajectory()
 	{
 		Vector2 velocity = ExplosideForce * getForwardDirection();
-		Vector2 lineStart = ToLocal(GlobalPosition);
+		Vector2 lineStart = GlobalPosition;
 		Vector2 lineEnd;
 		float gravity = (float)ProjectSettings.GetSetting("physics/2d/default_gravity");
 		float drag = (float)ProjectSettings.GetSetting("physics/2d/default_linear_damp");
-		float timeStep = 0.02f;
+		float timeStep = 0.016f;
 		var colors = new Color[] { Colors.Red,Colors.Blue};
-		for(int i = 0; i < 70; i++)
+		testBullet.GlobalPosition = lineStart;
+
+		for(int i = 0; i < 300; i++)
 		{
-			velocity += Vector2.Down * gravity * timeStep;//
+			velocity.Y += gravity * timeStep;//
 			lineEnd = lineStart + velocity * timeStep;
-			velocity = velocity * Mathf.Clamp(1.0f - drag * timeStep, 0.1f, 1.0f);
-			var ray = rayCastQuery2d(lineStart, lineEnd);
-			if (ray!= null)
+			velocity *= Mathf.Clamp(1.0f - drag * timeStep, 0.1f, 1.0f);
+			// var ray = rayCastQuery2d(lineStart, lineEnd);
+			// if (ray!= null)
+			// {
+			// 	velocity = velocity.Bounce((Vector2)ray["normal"]);
+			// 	DrawLineGlobal(lineStart, lineEnd, Colors.Green, 2);
+			// 	lineStart = (Vector2)ray["position"];
+			// 	continue;
+			// }
+			var collision = testBullet.MoveAndCollide(velocity * timeStep);
+			if (collision != null)
 			{
-				break;
+				velocity = velocity.Bounce(collision.GetNormal());
+				DrawLineGlobal(lineStart, testBullet.GlobalPosition, Colors.Green, 2);
+				lineStart = testBullet.GlobalPosition;
+				continue;
 			}
-			DrawLine(lineStart, lineEnd, colors[i % 2], 2);
+			DrawLineGlobal(lineStart, lineEnd, colors[i % 2], 2);
 			lineStart = lineEnd;
 		}
+	}
+	public void DrawLineGlobal(Vector2 pointA, Vector2 pointB, Color color, int width)
+	{
+		var localOffset = pointA - GlobalPosition;
+		var pointBLocal = pointB - GlobalPosition;
+		DrawLine(localOffset, pointBLocal, color, width);
 	}
 	public Godot.Collections.Dictionary rayCastQuery2d(Vector2 pointA, Vector2 pointB)
 	{

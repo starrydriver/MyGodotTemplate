@@ -1,7 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://b4dgeviv0oviq"]
+[gd_scene load_steps=5 format=3 uid="uid://b4dgeviv0oviq"]
 
 [ext_resource type="Script" uid="uid://csl7mxffq1emd" path="res://打砖块基础模板/BreakBricksBullet.cs" id="1_e8q6k"]
 [ext_resource type="Texture2D" uid="uid://biob632iiqgh7" path="res://素材/coin.png" id="1_yepne"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_e8q6k"]
+friction = 0.0
+bounce = 1.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e8q6k"]
 radius = 19.0
@@ -9,6 +13,7 @@ height = 38.0
 
 [node name="BreakBricksBullet" type="RigidBody2D"]
 collision_layer = 2
+physics_material_override = SubResource("PhysicsMaterial_e8q6k")
 script = ExtResource("1_e8q6k")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
