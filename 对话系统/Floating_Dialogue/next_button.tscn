@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://b34c7t4rw3q6e"]
 
-[ext_resource type="Script" uid="uid://blumbs0latk2" path="res://对话系统/NextButton.cs" id="1_kv6co"]
+[ext_resource type="Script" uid="uid://blumbs0latk2" path="res://对话系统/Floating_Dialogue/NextButton.cs" id="1_kv6co"]
 
 [node name="NextButton" type="Button"]
 anchors_preset = -1

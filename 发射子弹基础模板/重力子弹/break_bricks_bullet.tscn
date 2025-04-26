@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://b4dgeviv0oviq"]
 
-[ext_resource type="Script" uid="uid://csl7mxffq1emd" path="res://打砖块基础模板/BreakBricksBullet.cs" id="1_e8q6k"]
+[ext_resource type="Script" uid="uid://csl7mxffq1emd" path="res://发射子弹基础模板/重力子弹/BreakBricksBullet.cs" id="1_e8q6k"]
 [ext_resource type="Texture2D" uid="uid://biob632iiqgh7" path="res://素材/coin.png" id="1_yepne"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_e8q6k"]

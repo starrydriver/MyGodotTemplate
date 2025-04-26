@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=4 uid="uid://bw3hd8lsa5icw"]
 
 [ext_resource type="Texture2D" uid="uid://dinheteqvdsmq" path="res://素材/icon.svg" id="1_a1hya"]
-[ext_resource type="Script" uid="uid://ct773c5sre5a3" path="res://打砖块基础模板/BreakBricksSprite.cs" id="2_8x3gl"]
+[ext_resource type="Script" uid="uid://ct773c5sre5a3" path="res://发射子弹基础模板/重力子弹/BreakBricksSprite.cs" id="2_8x3gl"]
 [ext_resource type="Texture2D" uid="uid://biob632iiqgh7" path="res://素材/coin.png" id="3_e651e"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8x3gl"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://cgj66jqub40e3"]
 
-[ext_resource type="Script" uid="uid://nmedihb76lts" path="res://对话系统/DialogueBox.cs" id="1_ci3of"]
-[ext_resource type="PackedScene" uid="uid://b34c7t4rw3q6e" path="res://对话系统/next_button.tscn" id="2_ydkre"]
+[ext_resource type="Script" uid="uid://nmedihb76lts" path="res://对话系统/Floating_Dialogue/DialogueBox.cs" id="1_do0kh"]
+[ext_resource type="PackedScene" uid="uid://b34c7t4rw3q6e" path="res://对话系统/Floating_Dialogue/next_button.tscn" id="2_clhrw"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3ovy4"]
 resource_local_to_scene = true
@@ -25,7 +25,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_ci3of")
+script = ExtResource("1_do0kh")
 myJson = "res://对话系统/json实现/txt2.json"
 myLabel1 = NodePath("对话框1")
 myLabel2 = NodePath("对话框2")
@@ -39,7 +39,7 @@ offset_bottom = 192.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_3ovy4")
 autowrap_mode = 2
 
-[node name="NextButton" parent="对话框1" node_paths=PackedStringArray("myDialogueBox") instance=ExtResource("2_ydkre")]
+[node name="NextButton" parent="对话框1" node_paths=PackedStringArray("myDialogueBox") instance=ExtResource("2_clhrw")]
 layout_mode = 1
 offset_left = 315.0
 offset_top = 111.0
@@ -56,7 +56,7 @@ offset_bottom = 191.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_ci3of")
 autowrap_mode = 2
 
-[node name="NextButton" parent="对话框2" node_paths=PackedStringArray("myDialogueBox") instance=ExtResource("2_ydkre")]
+[node name="NextButton" parent="对话框2" node_paths=PackedStringArray("myDialogueBox") instance=ExtResource("2_clhrw")]
 layout_mode = 1
 offset_left = 319.0
 offset_top = 112.0

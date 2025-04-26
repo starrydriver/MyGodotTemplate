@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://d3bapfcs2jpoo"]
+
+[ext_resource type="Script" uid="uid://npr762b3pcba" path="res://发射子弹基础模板/MyBullet.cs" id="1_54x8v"]
+[ext_resource type="Texture2D" uid="uid://biob632iiqgh7" path="res://素材/coin.png" id="1_lnpq0"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_54x8v"]
+radius = 4.5
+height = 10.0
+
+[node name="myBullet" type="RigidBody2D"]
+gravity_scale = 0.0
+script = ExtResource("1_54x8v")
+_floatForce = 1.5
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(2, 2)
+texture = ExtResource("1_lnpq0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(2, 2)
+shape = SubResource("CapsuleShape2D_54x8v")

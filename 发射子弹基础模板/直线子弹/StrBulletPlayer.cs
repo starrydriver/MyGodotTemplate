@@ -1,15 +1,34 @@
 using Godot;
 using System;
 
-public partial class Character : Sprite2D
+public partial class StrBulletPlayer : Sprite2D
 {
 	[Export] public RayCast2D rayCast;
+	private PackedScene myBulletScene;
+	private MyBullet myBullet;
 	public override void _Ready()
 	{
-		_ = PrintRayCastPositionAsync();
-
+		myBulletScene = GD.Load<PackedScene>("res://发射子弹基础模板/my_bullet.tscn");
+		// _ = PrintRayCastPositionAsync();//print raycast position
 	}
-
+	public override void _UnhandledInput(InputEvent @event)
+	{
+		if (@event is InputEventMouseButton mouseButtonEvent)
+		{
+			if (mouseButtonEvent.ButtonIndex == MouseButton.Left && mouseButtonEvent.IsPressed())
+			{
+				fireBullets();
+			}
+		}
+	}
+	public override void _Process(double delta)
+	{
+		QueueRedraw();// redraw every frame
+	}
+	public override void _Draw()
+	{
+		updateTrajectory();
+	}
 	private async System.Threading.Tasks.Task PrintRayCastPositionAsync()
 	{
 		while (true)
@@ -18,13 +37,12 @@ public partial class Character : Sprite2D
 			await ToSignal(GetTree().CreateTimer(2.0), "timeout");
 		}
 	}
-	public override void _Process(double delta)
+	public void fireBullets()
 	{
-		QueueRedraw();
-	}
-	public override void _Draw()
-	{
-		updateTrajectory();
+		myBullet = myBulletScene.Instantiate<MyBullet>();
+		GetTree().Root.AddChild(myBullet);
+		myBullet.GlobalPosition = GlobalPosition;
+		myBullet.LinearVelocity = 500 * getForwardDirection();
 	}
 	public Vector2 getForwardDirection()
 	{
@@ -34,15 +52,13 @@ public partial class Character : Sprite2D
 	{
 		Vector2 lineStart = GlobalPosition;
 		Vector2 lineEnd;
-	
 		float timeStep = 10f;
 		var colors = new Color[] { Colors.Yellow, new Color(1, 1, 1, 0.0f) };
-
 		Vector2 direction = getForwardDirection();
 		for(int i = 0; i < 100; i++)
 		{
 			lineEnd = lineStart + direction * timeStep;
-			rayCast.GlobalPosition = lineStart; // 关键：每次更新起点位置
+			rayCast.GlobalPosition = lineStart;
 			rayCast.TargetPosition = lineEnd - lineStart;
 			rayCast.ForceRaycastUpdate(); 
 			if (rayCast.IsColliding())
