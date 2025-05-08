@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cgj66jqub40e3"]
+[gd_scene load_steps=6 format=3 uid="uid://cgj66jqub40e3"]
 
 [ext_resource type="Script" uid="uid://nmedihb76lts" path="res://对话系统/Floating_Dialogue/DialogueBox.cs" id="1_do0kh"]
 [ext_resource type="PackedScene" uid="uid://b34c7t4rw3q6e" path="res://对话系统/Floating_Dialogue/next_button.tscn" id="2_clhrw"]
+[ext_resource type="JSON" path="res://对话系统/json测试文本/txt2.json" id="2_mc1ak"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3ovy4"]
 resource_local_to_scene = true
@@ -26,7 +27,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_do0kh")
-myJson = "res://对话系统/json实现/txt2.json"
+myJson = ExtResource("2_mc1ak")
 myLabel1 = NodePath("对话框1")
 myLabel2 = NodePath("对话框2")
 

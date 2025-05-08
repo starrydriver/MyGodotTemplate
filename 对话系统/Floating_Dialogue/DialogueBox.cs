@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 public partial class DialogueBox : Control
 {
-	[Export] public string myJson="res://对话系统/json实现/txt1.json";
+	[Export] public Json  myJson;
 	[Export] public Label myLabel1;
     [Export] public Label myLabel2;
     [Export]public int eventId = 0;
@@ -24,12 +24,12 @@ public partial class DialogueBox : Control
 	}
     public void JsonParse()
     {
-        if (!FileAccess.FileExists(myJson))
+        if (!FileAccess.FileExists(myJson.ResourcePath))
         {
-            GD.PrintErr($"文件不存在: {myJson}");
+            GD.PrintErr($"文件不存在: {myJson.ResourcePath}");
             return;
         }
-        using var file = FileAccess.Open(myJson, FileAccess.ModeFlags.Read);
+        using var file = FileAccess.Open(myJson.ResourcePath, FileAccess.ModeFlags.Read);
         string jsonText = file.GetAsText();
         file.Close(); // 确保关闭文件
         try
